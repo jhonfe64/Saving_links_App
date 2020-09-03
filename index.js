@@ -46,5 +46,3 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.listen(app.get('port'), function(){
     console.log('server running on port', app.get('port'));
 });
-
-console.log("hola");
