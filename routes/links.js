@@ -3,9 +3,11 @@ const router = express.Router();
 const sequelize = require('../database');
 //requerimos el archivo lib desde donde se vana a manejar las librerias
 const lib =  require('../lib/lib');
-const { route } = require('./autentication');
 //de ese archivo necesitamos la librería time ago
 const timeago = lib.timeago;
+
+
+
 
 
 //Aqui creamos las rutas para crear los links y guardarlos
@@ -24,6 +26,7 @@ router.post('/add', (req, res)=>{
         replacements: [title, url, description]
     });
     //una vez los envie redireccione get /links la de abajo que trae todos los links
+    req.flash('success', 'link added successfully');
     res.redirect('/links');
 });
 
@@ -47,17 +50,39 @@ router.get('/delete/:id', async (req, res)=>{
         replacements: [id]
     }).then((deleted_item)=>{
         if(deleted_item){
+            req.flash('success', 'link deleted successfully');
             res.redirect('/links')
         }
     })
 });
 
-
+//==> La ruta permite cuando se le de click al botón editar el link al que se le dio click, se mostrará el form que está en links/edit
 router.get('/edit/:id', async (req, res)=>{
-    const id = req.id;
-    res.render('links/edit');
+    const id = req.params.id;
+    await sequelize.query('SELECT * FROM links WHERE id = ?', {
+        type: sequelize.QueryTypes.SELECT,
+        replacements: [id]
+    }).then((link)=>{
+        res.render('links/edit', {link: link[0]});
+    });
 });
 
+
+//==> La ruta permite enviar a la base de datos el elemento que se va a editar
+router.post('/edit/:id', (req, res)=>{
+    const id = req.params.id;
+    const {title, url, description} = req.body
+    sequelize.query('UPDATE links SET title = ?, url = ?, description = ?  WHERE id = ?', {
+        replacements: [title, url, description, id]
+    }).then((updated_link)=>{
+        if(updated_link){
+            req.flash('success', 'link updateed successfully');
+            //Una vez haya echo la inserción redirecciones a la pagina donde estan todos los links
+            res.redirect('/links');
+        }
+    })
+
+})
 
 
 module.exports = router;
