@@ -2,9 +2,11 @@ const express = require('express');
 const router = express.Router();
 const sequelize = require('../database');
 //requerimos el archivo lib desde donde se vana a manejar las librerias
-const lib =  require('../lib/lib');
+const lib = require('../lib/lib');
 //de ese archivo necesitamos la librería time ago
 const timeago = lib.timeago;
+
+
 
 
 
@@ -20,14 +22,18 @@ router.get('/add', (req, res)=>{
 
 //==> La ruta permite enviar los datos del nuevo link registrado a la base de datos
 //recibe los datos del form que se llamo en la ruta anterior
-router.post('/add', (req, res)=>{
+router.post('/add', async (req, res)=>{
     const {title, url, description} = req.body;
-    sequelize.query(`INSERT INTO links (title, url, description) VALUES (?,?,?)`,{
+    await sequelize.query(`INSERT INTO links (title, url, description) VALUES (?,?,?)`,{
         replacements: [title, url, description]
-    });
-    //una vez los envie redireccione get /links la de abajo que trae todos los links
-    req.flash('success', 'link added successfully');
-    res.redirect('/links');
+    }).then((addedLink)=>{
+        if(addedLink){
+            //una vez los envie redireccione get /links la de abajo que trae todos los links
+            req.flash('success', 'Link Saved Successfully');
+            res.redirect('/links');
+        }
+    })
+   
 });
 
 
@@ -76,13 +82,12 @@ router.post('/edit/:id', (req, res)=>{
         replacements: [title, url, description, id]
     }).then((updated_link)=>{
         if(updated_link){
-            req.flash('success', 'link updateed successfully');
+            req.flash('success', 'link updated successfully');
             //Una vez haya echo la inserción redirecciones a la pagina donde estan todos los links
             res.redirect('/links');
         }
     })
 
 })
-
 
 module.exports = router;

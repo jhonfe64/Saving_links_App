@@ -20,8 +20,35 @@ router.post('/signup', passport.authenticate('local.signup', {
 
 
 router.get('/profile', (req, res)=>{
-    res.send("thi is your profile");
+    res.render('profile');
 });
+
+
+
+//=============================================================================================================================
+    //iniciando sesion
+//=============================================================================================================================
+
+
+//===> la ruta get signin muestra el formulario de inicio de sesión
+router.get('/signin', (req, res)=>{
+    res.render('auth/signin')
+});
+
+
+//===> la ruta post muestra el redireccionamiento
+router.post('/signin', (req, res, next)=>{
+    //usamos el metodo metodo authenticate de passport que recibe local.signin de passport.js
+    passport.authenticate('local.signin', {
+        successRedirect: '/profile',
+        failureRedirect: '/signin',
+        failureFlash: true
+    })(req, res, next);
+});
+
+
+
+
 
 
 
