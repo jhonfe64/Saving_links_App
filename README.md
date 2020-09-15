@@ -4,7 +4,7 @@ This web application allows to sign up users, they can save links they are inter
 
 
 
-### This project use the followig tecnologies
+### This project use the following technologies
 
 1. node.js
 2. express.js
@@ -26,7 +26,7 @@ This web application allows to sign up users, they can save links they are inter
 
 
 
-### To clone the repository and run the porject, please follow this instructions:
+### To clone the repository and run the project, please follow this instructions:
 
 - Clone the repository https://github.com/jhonfe64/Saving_links_App.git
 - Use npm i to install all dependences 
