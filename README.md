@@ -27,8 +27,6 @@ This web application allows to sign up users, they can save links they are inter
 
 ### To clone the repository and run it please follow this instructions
 
-- Clone the repository https://github.com/jhonfe64/delia.git
+- Clone the repository https://github.com/jhonfe64/Saving_links_App.git
 - Use npm i to install all dependences 
-- Import the data base delilah_resto.sql
-- Import the postman collection deliah_resto.postman_collection.json
 
