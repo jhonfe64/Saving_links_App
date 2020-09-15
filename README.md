@@ -30,4 +30,5 @@ This web application allows to sign up users, they can save links they are inter
 
 - Clone the repository https://github.com/jhonfe64/Saving_links_App.git
 - Use npm i to install all dependences 
+- Use nodemon index to run the server 
 
