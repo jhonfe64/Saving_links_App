@@ -26,7 +26,7 @@ This web application allows to sign up users, they can save links they are inter
 
 
 
-### To clone the repository and run the porject it please follow this instructions
+### To clone the repository and run the porject, please follow this instructions:
 
 - Clone the repository https://github.com/jhonfe64/Saving_links_App.git
 - Use npm i to install all dependences 
