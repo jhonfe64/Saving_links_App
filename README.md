@@ -4,14 +4,14 @@ This web application allows to sign up users, they can save links they are inter
 
 
 
-### This project use the following technologies
+### This project use the following technologies:
 
 1. node.js
 2. express.js
 3. ejs
 4. Bootstrap4
 
-### Includes the following node packages
+### It includes the following node packages:
 
 1. sequelize
 2. mysql2
