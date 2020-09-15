@@ -20,12 +20,13 @@ This web application allows to sign up users, they can save links they are inter
 5. express-mysql-session
 6. express-session
 7. express-validator
-8. timeagojs
+8. timeago.js
+9. connect-flash
 9. bcrypt
-10.connect-flash
 
 
-### To clone the repository and run it please follow this instructions
+
+### To clone the repository and run the porject it please follow this instructions
 
 - Clone the repository https://github.com/jhonfe64/Saving_links_App.git
 - Use npm i to install all dependences 
