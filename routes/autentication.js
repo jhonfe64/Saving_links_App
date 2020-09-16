@@ -1,15 +1,18 @@
 const express = require('express');
 const router = express.Router();
 const passport = require('passport');
+const {isLoggedIn} = require('../lib/logout');
+const {isnotLoggedIn} = require('../lib/logout');
+
 
 //==> la ruta get signup solamente muestra el formulario de registro
-router.get('/signup', (req, res)=>{
+router.get('/signup', isnotLoggedIn, (req, res)=>{
     res.render('auth/signup');
 });
 
 //==> la ruta la ruta post signup obtiene los datos del formulario y los envía a la base de datos
 //==> recibe el metodo authenticate de passport que recibe local.signup de passport.js
-router.post('/signup', passport.authenticate('local.signup', {
+router.post('/signup', isnotLoggedIn, passport.authenticate('local.signup', {
     //si el usuario se registra correctamente se redirije a la url /profile
     successRedirect: '/profile',
     //si el usuario no ha podido registrarse lo redirije al mismo form en la ruta signup
@@ -19,7 +22,7 @@ router.post('/signup', passport.authenticate('local.signup', {
 }));
 
 
-router.get('/profile', (req, res)=>{
+router.get('/profile', isLoggedIn, (req, res)=>{
     res.render('profile');
 });
 
@@ -31,13 +34,13 @@ router.get('/profile', (req, res)=>{
 
 
 //===> la ruta get signin muestra el formulario de inicio de sesión
-router.get('/signin', (req, res)=>{
+router.get('/signin', isnotLoggedIn, (req, res)=>{
     res.render('auth/signin')
 });
 
 
 //===> la ruta post muestra el redireccionamiento
-router.post('/signin', (req, res, next)=>{
+router.post('/signin', isnotLoggedIn, (req, res, next)=>{
     //usamos el metodo metodo authenticate de passport que recibe local.signin de passport.js
     passport.authenticate('local.signin', {
         successRedirect: '/profile',
@@ -48,6 +51,16 @@ router.post('/signin', (req, res, next)=>{
 
 
 
+
+//=============================================================================================================================
+    //cerrar sesión
+//=============================================================================================================================
+
+
+router.get('/logout', isLoggedIn, (req, res)=>{
+    req.logOut();
+    res.redirect('/signin');
+});
 
 
 

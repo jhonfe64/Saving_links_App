@@ -10,6 +10,7 @@ const MySQLStore = require('express-mysql-session');
 const bodyParser = require('body-parser');
 //del archivo ./keys llamamos el objeto database 
 const {database} = require('./keys');
+const { readlink } = require('fs');
 
 //==>Inicializaciones
 
@@ -61,14 +62,13 @@ app.use((req, res, next) => {
     app.locals.message = req.flash('message');
     app.locals.success = req.flash('success');
     app.locals.user = req.user;
-    console.log(app.locals.user);
     next();
   });
 
 
 
 //=================> Rutas
-//app.use(require('./routes/index'));
+app.use(require('./routes/index'));
 app.use(require('./routes/autentication'));
 app.use('/links', require('./routes/links'));
 //=================>Public
