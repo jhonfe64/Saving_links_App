@@ -1,6 +1,6 @@
 # Saving_links_App
 
-This web application allows to sign up users, they can save links they are interested on, including title, url and a brief description.
+This web application allows to sign up users, they can save links they are interested in, including title, url and a brief description.
 
 
 
