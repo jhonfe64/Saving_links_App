@@ -28,7 +28,9 @@ This web application allows to sign up users, they can save links they are inter
 
 ### To clone the repository and run the project, please follow this instructions:
 
-- Clone the repository https://github.com/jhonfe64/Saving_links_App.git
-- Use npm i to install all dependences 
-- Use nodemon index to run the server 
+#### Type on vsc console
+
+- git clone https://github.com/jhonfe64/Saving_links_App.git
+- npm i (to install all dependences) 
+- nodemon index (to run the project) 
 
