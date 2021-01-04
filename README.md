@@ -35,6 +35,8 @@ This web application allows to sign up users, they can save links they are inter
 - nodemon index (to run the project) 
 
 
+### Type on your browser http://localhost:4000 to visualize the project
+
  
 ![](https://github.com/jhonfe64/Saving_links_App/blob/master/link1.png?raw=true)
 
