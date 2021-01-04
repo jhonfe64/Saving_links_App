@@ -9,8 +9,10 @@ This web application allows to sign up users, they can save links they are inter
 1. Nodejs
 2. expressjs
 3. Ejs
-4. Bootstrap4
-5. Mysql
+4. Html5
+5. Css3
+6. Bootstrap4
+7. Mysql
 
 ### It includes the following node packages:
 
