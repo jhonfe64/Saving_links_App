@@ -33,6 +33,7 @@ This web application allows to sign up users, they can save links they are inter
 - git clone https://github.com/jhonfe64/Saving_links_App.git
 - npm i (to install all dependences) 
 - nodemon index (to run the project) 
+- Import the data base database_links.sql
 
 
 ### Type on your browser http://localhost:4000 to visualize the project
